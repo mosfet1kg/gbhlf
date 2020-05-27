@@ -1,0 +1,46 @@
+image:
+  tag: 1.4.6
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    #nginx.ingress.kubernetes.io/grpc-backend: "true"
+    #nginx.ingress.kubernetes.io/secure-backends: "true"
+  path: /
+  hosts:
+    # TODO: Change this back
+    - ord-ca.dev.ncp-hlf.ga
+  tls:
+    - secretName: ord-ca-tlsrootcert
+      hosts:
+        # TODO: Change this back
+        - ord-ca.dev.ncp-hlf.ga
+
+persistence:
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+# caName: ord-ca
+
+postgresql:
+  enabled: false
+
+mysql:
+  enabled: false
+
+config:
+  debug: true
+  tls: true
+  mountTLS: true
+  hlfToolsVersion: 1.4.6
+  csr:
+    names:
+      c: KR
+      st: Gyeonggi-do
+      l: Seongnam-si
+      o: "NAVER Corp"
+      ou: "Blockchain"
+  affiliations:
+    ordererorg: []

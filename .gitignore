@@ -1,0 +1,10 @@
+chart/
+testconfigtxgen.yaml
+config/
+!config/configtx.yaml
+*.tx
+*.crt
+*.key
+*.block
+*.pem
+*.json

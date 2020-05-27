@@ -1,0 +1,45 @@
+image:
+  repository: hyperledger/fabric-tools
+  tag: 1.4.6
+
+persistence:
+  enabled: false
+
+logging:
+  level: debug
+
+peer:
+  mspID: Org1MSP
+  tls:
+    server:
+      enabled: false
+    client:
+      enabled: false
+
+# secrets:
+#   peer:
+#     caCert: ordererorg-cacert
+#     cert: hlf--ord1-idcert
+#     key: hlf--ord1-idkey
+#     # tlsRootCert: hlf--ord1-tls-rootcert  # cacert.pem  https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L29
+#     # tlsClientRootCert: hlf--ord1-tls-rootcert
+#     # tls: hlf--ord1-tls
+#   channels:
+#     - hlf--channel
+#   adminCert: hlf--ord1-idcert
+#   adminKey: hlf--ord1-idkey
+#   ordTlsRootCert: hlf--ord1-tls-rootcert
+
+secrets:
+  peer:
+    caCert: org1-cacert       # Org1의 RCA
+    cert: org1-admincert
+    key: org1-adminkey
+    # tlsRootCert: hlf--ord1-tls-rootcert  # cacert.pem  https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L29
+    # tlsClientRootCert: hlf--ord1-tls-rootcert
+    # tls: hlf--ord1-tls
+  channels:
+    - hlf--channel
+  adminCert: org1-admincert
+  adminKey: org1-adminkey
+  ordTlsRootCert: hlf--ord1-tls-rootcert

@@ -1,0 +1,57 @@
+image:
+  tag: 1.4.6
+
+persistence:
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true" # https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/annotations.md#ssl-passthrough
+    #nginx.ingress.kubernetes.io/backend-protocol: "GRPCS"
+  path: /
+  hosts:
+    # TODO: Change this back
+    - ord1.dev.ncp-hlf.ga
+  tls:
+    - secretName: hlf--ord1-tls
+      hosts:
+        # TODO: Change this back
+        - ord1.dev.ncp-hlf.ga
+
+logging:
+  level: debug
+
+ord:
+  type: etcdraft
+  ## MSP ID of the Orderer
+  mspID: OrdererMSP
+  tls:
+    server:
+      enabled: true
+    client:
+      enabled: false      
+
+# secrets:
+#   ord:
+#     cert: hlf--ord1-idcert
+#     key: hlf--ord1-idkey
+#     caCert: hlf--ca-cert                   # organization의 cacert
+#     tlsRootCert: hlf--ord1-tls-root-cert   # tlsca로 부터 받은 cacert.pem
+#     tls: hlf--ord1-tls                     # tlsca로 부터 받은 tls.crt, tls.key
+#   genesis: hlf--genesis
+#   adminCert: hlf--org-admincert            # organization의 admin
+#   caServerTls: hlf--ord1-ca-server-tls     # tlsca로 부터 받은 인증서 ingress에 사용한 것? 쓰는데가 없음
+
+secrets:
+  ord:
+    caCert: ordererorg-cacert
+    cert: hlf--ord1-idcert # https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L27
+    key: hlf--ord1-idkey  # https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L28
+    tlsRootCert: hlf--ord1-tls-rootcert  # cacert.pem  https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L29
+    tlsClientRootCert: hlf--ord1-tls-rootcert
+    tls: hlf--ord1-tls
+  genesis:  hlf--genesis
+  adminCert: ordererorg-admincert   ## ??

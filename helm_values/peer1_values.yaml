@@ -1,0 +1,49 @@
+image:
+  tag: 1.4.6
+
+persistence:
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+  path: /
+  hosts:
+    # TODO: Change this back
+    - org1-peer1.dev.ncp-hlf.ga
+  tls:
+    - secretName: org1-peer1-tls
+      hosts:
+        # TODO: Change this back
+        - org1-peer1.dev.ncp-hlf.ga
+
+logging:
+  level: debug
+
+peer:
+  databaseType: CouchDB # goleveldb
+  couchdbInstance: cdb-peer1
+  mspID: Org1MSP
+  tls:
+    server:
+      enabled: false
+    client:
+      enabled: false
+
+secrets:
+  peer:
+    caCert: org1-cacert       # Org1의 RCA
+    cert: org1-peer1-idcert
+    key: org1-peer1-idkey
+    tlsRootCert: org1-peer1-tls-rootcert
+    tls: org1-peer1-tls
+    tlsClientRootCert: org1-peer1-tls-rootcert  # cacert.pem
+    tlsClient: org1-peer1-tls   # tls.crt, tls.key
+  channels:
+    - hlf--channel
+  adminCert: org1-admincert
+  adminKey: org1-adminkey
+  ordTlsRootCert: hlf--ord1-tls-rootcert
