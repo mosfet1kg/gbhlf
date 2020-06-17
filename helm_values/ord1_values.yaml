@@ -34,17 +34,6 @@ ord:
     client:
       enabled: false      
 
-# secrets:
-#   ord:
-#     cert: hlf--ord1-idcert
-#     key: hlf--ord1-idkey
-#     caCert: hlf--ca-cert                   # organization의 cacert
-#     tlsRootCert: hlf--ord1-tls-root-cert   # tlsca로 부터 받은 cacert.pem
-#     tls: hlf--ord1-tls                     # tlsca로 부터 받은 tls.crt, tls.key
-#   genesis: hlf--genesis
-#   adminCert: hlf--org-admincert            # organization의 admin
-#   caServerTls: hlf--ord1-ca-server-tls     # tlsca로 부터 받은 인증서 ingress에 사용한 것? 쓰는데가 없음
-
 secrets:
   ord:
     caCert: ordererorg-cacert # OrdererOrg CA에서 받은 caCert
