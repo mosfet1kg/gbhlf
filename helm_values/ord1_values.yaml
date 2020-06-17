@@ -47,11 +47,11 @@ ord:
 
 secrets:
   ord:
-    caCert: ordererorg-cacert
-    cert: hlf--ord1-idcert # https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L27
-    key: hlf--ord1-idkey  # https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L28
+    caCert: ordererorg-cacert # OrdererOrg CA에서 받은 caCert
+    cert: hlf--ord1-idcert # enrollment cert https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L27
+    key: hlf--ord1-idkey  # entrollment key  https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L28
     tlsRootCert: hlf--ord1-tls-rootcert  # cacert.pem  https://github.com/helm/charts/blob/c1bd92189296e4e3ae248f27da4fc7c2138b2648/stable/hlf-ord/templates/configmap--ord.yaml#L29
     tlsClientRootCert: hlf--ord1-tls-rootcert
     tls: hlf--ord1-tls
   genesis:  hlf--genesis
-  adminCert: ordererorg-admincert   ## ??
+  adminCert: ordererorg-admincert  # Organization MSP

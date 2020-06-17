@@ -32,6 +32,7 @@ Organizations:
     AnchorPeers:
         - Host: org1-peer1.dev.ncp-hlf.ga # org1-peer1-hlf-peer.blockchain.svc.cluster.local  #
           Port: 443
+
   - &OrdererOrg
     # DefaultOrg defines the organization which is used in the sampleconfig
     # of the fabric.git development environment
@@ -42,11 +43,6 @@ Organizations:
 
     # MSPDir is the filesystem path which contains the MSP configuration
     MSPDir: ./OrdererOrg/org-admin/ca
-
-    # AdminPrincipal: Role.MEMBER
-    # Policies defines the set of policies at this level of the config tree
-    # For organization policies, their canonical path is usually
-    #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
     Policies: 
       Readers:
         Type: Signature
@@ -155,10 +151,11 @@ Application: &ApplicationDefaults
     Admins:
       Type: ImplicitMeta
       Rule: "ANY Admins"
-      # Type: Signature
-      # Rule: "OR('OrdererMSP.member')"
+      # Type: Signature 
+      # Rule: "OutOf(1, 'Org1MSP.member', 'OrdererMSP.member')"
       # Type: ImplicitMeta
       # Rule: "MAJORITY Admins"
+
   Capabilities:
     <<: *ApplicationCapabilities
         
@@ -238,21 +235,21 @@ Orderer: &OrdererDefaults
   # Policies defines the set of policies at this level of the config tree
   # For Orderer policies, their canonical path is
   #   /Channel/Orderer/<PolicyName>
-  # Policies:
-  #   Readers:
-  #     Type: ImplicitMeta
-  #     Rule: "ANY Readers"
-  #   Writers:
-  #     Type: ImplicitMeta
-  #     Rule: "ANY Writers"
-  #   Admins:
-  #     Type: ImplicitMeta
-  #     Rule: "MAJORITY Admins"
-  #   # BlockValidation specifies what signatures must be included in the block
-  #   # from the orderer for the peer to validate it.
-  #   BlockValidation:
-  #     Type: ImplicitMeta
-  #     Rule: "ANY Writers"      
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"      
 
 ################################################################################
 #
@@ -308,7 +305,7 @@ Profiles:
     Consortiums:
       DefaultConsortium:
         Organizations: 
-          - *Org1            
+          # - *Org1
   DefaultChannel:
     Consortium: DefaultConsortium
     <<: *ChannelDefaults        

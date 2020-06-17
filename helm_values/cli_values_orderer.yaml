@@ -9,7 +9,7 @@ logging:
   level: debug
 
 peer:
-  mspID: Org1MSP
+  mspID: OrdererMSP
   tls:
     server:
       enabled: false
@@ -18,12 +18,11 @@ peer:
 
 secrets:
   peer:
-    caCert: org1-cacert       # Org1 CA로 발급 받은 caCert
-    cert: org1-admincert
-    key: org1-adminkey
+    caCert: ordererorg-cacert
+    cert: ordererorg-admincert
+    key: ordererorg-adminkey
   channels:
     - hlf--channel
-  adminCert: org1-admincert
-  adminKey: org1-adminkey
+  adminCert: ordererorg-admincert
+  adminKey: ordererorg-adminkey
   ordTlsRootCert: hlf--ord1-tls-rootcert
-
