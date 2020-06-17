@@ -21,8 +21,8 @@ secrets:
     caCert: ordererorg-cacert
     cert: ordererorg-admincert
     key: ordererorg-adminkey
-  channels:
-    - hlf--channel
+  # channels:
+    # - hlf--channel
   adminCert: ordererorg-admincert
   adminKey: ordererorg-adminkey
   ordTlsRootCert: hlf--ord1-tls-rootcert
