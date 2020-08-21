@@ -38,6 +38,8 @@ peer:
     externalEndpoint: org1-peer1.dev.ncp-hlf.ga:443
     useLeaderElection: true
     orgLeader: false
+  chaincode:
+    builder: hyperledger/fabric-ccenv:1.4
 
 secrets:
   peer:
