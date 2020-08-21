@@ -12,15 +12,25 @@ peer:
   mspID: Org1MSP
   tls:
     server:
-      enabled: false
+      enabled: true
     client:
       enabled: false
+  gossip:
+    bootstrap: org1-peer1.fin.ncp-hlf.ga:443
+    endpoint: org1-peer1.fin.ncp-hlf.ga:443 # 172.24.83.7:7051
+    externalEndpoint: org1-peer1.fin.ncp-hlf.ga:443
+    useLeaderElection: true
+    orgLeader: false    
 
 secrets:
   peer:
     caCert: org1-cacert       # Org1 CA로 발급 받은 caCert
     cert: org1-admincert
     key: org1-adminkey
+    tlsRootCert: org1-peer1-tls-rootcert
+    tls: org1-peer1-tls
+    tlsClientRootCert: org1-peer1-tls-rootcert  # cacert.pem
+    tlsClient: org1-peer1-tls   # tls.crt, tls.key    
   channels:
     - hlf--channel
   adminCert: org1-admincert

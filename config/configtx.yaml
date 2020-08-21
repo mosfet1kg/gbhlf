@@ -30,7 +30,7 @@ Organizations:
       #   Type: Signature
       #   Rule: "OR('Org1MSP.peer')"
     AnchorPeers:
-        - Host: org1-peer1.dev.ncp-hlf.ga # org1-peer1-hlf-peer.blockchain.svc.cluster.local  #
+        - Host: org1-peer1.fin.ncp-hlf.ga # org1-peer1-hlf-peer.blockchain.svc.cluster.local  #
           Port: 443
 
   - &OrdererOrg
@@ -174,7 +174,7 @@ Orderer: &OrdererDefaults
   OrdererType: etcdraft
 
   Addresses:
-      - ord1.dev.ncp-hlf.ga:443 
+      - ord1.fin.ncp-hlf.ga:443 
       #- ord1-hlf-ord.blockchain.svc.cluster.local:7050
       #- ord1-hlf-ord.blockchain.svc.cluster.local:7050
       # - ord2.blockchain.svc.cluster.local:7050
@@ -214,7 +214,7 @@ Orderer: &OrdererDefaults
     # a subset of the host:port items enumerated in this list should be
     # replicated under the Orderer.Addresses key above.
     Consenters:
-        - Host: ord1.dev.ncp-hlf.ga  # ord1-hlf-ord.blockchain.svc.cluster.local
+        - Host: ord1.fin.ncp-hlf.ga  # ord1-hlf-ord.blockchain.svc.cluster.local
           Port: 443
           ClientTLSCert: ./OrdererOrg/ord1/tlsca/signcerts/cert.pem
           ServerTLSCert: ./OrdererOrg/ord1/tlsca/signcerts/cert.pem
@@ -305,7 +305,7 @@ Profiles:
     Consortiums:
       DefaultConsortium:
         Organizations: 
-          # - *Org1
+         - *Org1
   DefaultChannel:
     Consortium: DefaultConsortium
     <<: *ChannelDefaults        

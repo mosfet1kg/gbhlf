@@ -14,12 +14,12 @@ ingress:
   path: /
   hosts:
     # TODO: Change this back
-    - ord1.dev.ncp-hlf.ga
+    - ord1.fin.ncp-hlf.ga
   tls:
     - secretName: hlf--ord1-tls
       hosts:
         # TODO: Change this back
-        - ord1.dev.ncp-hlf.ga
+        - ord1.fin.ncp-hlf.ga
 
 logging:
   level: debug

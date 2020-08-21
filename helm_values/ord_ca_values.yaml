@@ -11,12 +11,12 @@ ingress:
   path: /
   hosts:
     # TODO: Change this back
-    - ord-ca.dev.ncp-hlf.ga
+    - ord-ca.fin.ncp-hlf.ga
   tls:
     - secretName: ord-ca-tlsrootcert
       hosts:
         # TODO: Change this back
-        - ord-ca.dev.ncp-hlf.ga
+        - ord-ca.fin.ncp-hlf.ga
 
 persistence:
   accessMode: ReadWriteOnce

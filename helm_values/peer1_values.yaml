@@ -13,12 +13,12 @@ ingress:
   path: /
   hosts:
     # TODO: Change this back
-    - org1-peer1.dev.ncp-hlf.ga
+    - org1-peer1.fin.ncp-hlf.ga
   tls:
     - secretName: org1-peer1-tls
       hosts:
         # TODO: Change this back
-        - org1-peer1.dev.ncp-hlf.ga
+        - org1-peer1.fin.ncp-hlf.ga
 
 logging:
   level: debug
@@ -33,9 +33,9 @@ peer:
     client:
       enabled: false
   gossip:
-    bootstrap: org1-peer1.dev.ncp-hlf.ga:443
-    endpoint: org1-peer1.dev.ncp-hlf.ga:443 # 172.24.83.7:7051
-    externalEndpoint: org1-peer1.dev.ncp-hlf.ga:443
+    bootstrap: org1-peer1.fin.ncp-hlf.ga:443
+    endpoint: org1-peer1.fin.ncp-hlf.ga:443 # 172.24.83.7:7051
+    externalEndpoint: org1-peer1.fin.ncp-hlf.ga:443
     useLeaderElection: true
     orgLeader: false
   chaincode:
